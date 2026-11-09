@@ -1,0 +1,89 @@
+:root {
+  color-scheme: light;
+  font: 100%/1.55 system-ui, sans-serif;
+  color: #142820;
+  background: #eef4f0;
+}
+
+body {
+  margin: 0;
+  padding: clamp(1rem, 5vw, 4rem) 1rem;
+}
+
+main {
+  box-sizing: border-box;
+  max-width: 36rem;
+  margin: auto;
+  padding: clamp(1.4rem, 5vw, 2.6rem);
+  background: white;
+  border: 1px solid #cddbd2;
+  border-radius: 1rem;
+}
+
+.rotulo {
+  margin: 0 0 .5rem;
+  font-weight: 700;
+  color: #216047;
+}
+
+h1 {
+  margin: 0;
+  line-height: 1.15;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+form {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: .55rem;
+}
+
+label {
+  font-weight: 650;
+}
+
+label span,
+.observacao {
+  color: #445c50;
+  font-size: .9rem;
+  font-weight: 400;
+}
+
+input,
+select,
+button {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3rem;
+  padding: .65rem .85rem;
+  border: 1px solid #647e70;
+  border-radius: .5rem;
+  background: white;
+  color: inherit;
+  font: inherit;
+}
+
+input {
+  margin-bottom: .55rem;
+}
+
+button {
+  background: #17573c;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #53655c;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid #286eb0;
+  outline-offset: 3px;
+}
+
+#aviso:empty {
+  display: none;
+}

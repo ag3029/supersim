@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitação de atendimento</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="whatsapp-config.js" defer></script>
+  <script src="atendimento.js" defer></script>
+</head>
+<body>
+  <main>
+    <p class="rotulo">Atendimento</p>
+    <h1>Converse pelo WhatsApp</h1>
+    <p>Escolha um assunto e abra uma conversa com a equipe de atendimento.</p>
+    <form id="atendimento">
+      <label for="nome">Como podemos chamar você? <span>(opcional)</span></label>
+      <input id="nome" name="nome" maxlength="70" autocomplete="given-name">
+      <label for="assunto">Assunto</label>
+      <select id="assunto" name="assunto" required>
+        <option value="">Selecione um assunto</option>
+        <option value="tirar dúvidas sobre opções de crédito">Dúvidas sobre opções de crédito</option>
+        <option value="entender como funciona uma simulação">Como funciona uma simulação</option>
+        <option value="falar sobre outro assunto">Outro assunto</option>
+      </select>
+      <p class="observacao">Você pode revisar a mensagem no WhatsApp antes de enviá-la. Evite incluir CPF, senhas ou dados bancários.</p>
+      <button id="abrir" type="submit" disabled>Abrir o WhatsApp</button>
+      <p id="aviso" role="status"></p>
+      <noscript><p>Ative o JavaScript para abrir a conversa.</p></noscript>
+    </form>
+  </main>
+</body>
+</html>
