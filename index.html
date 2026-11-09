@@ -3,31 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Solicitação de atendimento</title>
+  <meta name="referrer" content="no-referrer">
+  <title>Simulação de crédito</title>
   <link rel="stylesheet" href="estilos.css">
   <script src="whatsapp-config.js" defer></script>
-  <script src="atendimento.js" defer></script>
+  <script src="simulacao.js" defer></script>
 </head>
 <body>
   <main>
-    <p class="rotulo">Atendimento</p>
-    <h1>Converse pelo WhatsApp</h1>
-    <p>Escolha um assunto e abra uma conversa com a equipe de atendimento.</p>
-    <form id="atendimento">
-      <label for="nome">Como podemos chamar você? <span>(opcional)</span></label>
-      <input id="nome" name="nome" maxlength="70" autocomplete="given-name">
-      <label for="assunto">Assunto</label>
-      <select id="assunto" name="assunto" required>
-        <option value="">Selecione um assunto</option>
-        <option value="tirar dúvidas sobre opções de crédito">Dúvidas sobre opções de crédito</option>
-        <option value="entender como funciona uma simulação">Como funciona uma simulação</option>
-        <option value="falar sobre outro assunto">Outro assunto</option>
-      </select>
-      <p class="observacao">Você pode revisar a mensagem no WhatsApp antes de enviá-la. Evite incluir CPF, senhas ou dados bancários.</p>
-      <button id="abrir" type="submit" disabled>Abrir o WhatsApp</button>
-      <p id="aviso" role="status"></p>
-      <noscript><p>Ative o JavaScript para abrir a conversa.</p></noscript>
+    <progress id="progresso" max="5" value="1" aria-label="Progresso da simulação"></progress>
+    <form id="simulacao">
+      <p id="etapa" class="etapa">Etapa 1 de 5</p>
+      <section class="tela">
+        <img class="ilustracao" src="image.png" alt="">
+        <h1 tabindex="-1">Qual o seu objetivo?</h1>
+        <div class="opcoes">
+          <label class="opcao"><span>🙂 Uso pessoal</span><input type="radio" name="objetivo" value="Uso pessoal" checked></label>
+          <label class="opcao"><span>🏢 Para meu negócio</span><input type="radio" name="objetivo" value="Para meu negócio"></label>
+        </div>
+      </section>
+
+      <section class="tela" hidden>
+        <h2 tabindex="-1">Quanto você quer simular?</h2>
+        <p>Arraste o controle para escolher um valor de R$ 1.000 a R$ 30.000.</p>
+        <label class="campo" for="valor">Valor da simulação</label>
+        <output id="valor-exibido" for="valor">R$ 10.000,00</output>
+        <input id="valor" name="valor" type="range" min="1000" max="30000" step="500" value="10000">
+      </section>
+
+      <section class="tela" hidden>
+        <h2 tabindex="-1">Em quantas parcelas?</h2>
+        <label class="campo" for="parcelas">Quantidade de parcelas</label>
+        <select id="parcelas" name="parcelas">
+          <option value="6">6 parcelas</option>
+          <option value="12" selected>12 parcelas</option>
+          <option value="18">18 parcelas</option>
+          <option value="24">24 parcelas</option>
+        </select>
+        <p class="nota">A referência divide o valor pelo número de parcelas. Juros e encargos podem alterar o valor final.</p>
+      </section>
+
+      <section class="tela" hidden>
+        <h2 tabindex="-1">Como podemos chamar você?</h2>
+        <p>Se quiser, inclua seu nome na mensagem de atendimento.</p>
+        <label class="campo" for="nome">Nome (opcional)</label>
+        <input id="nome" name="nome" maxlength="70" autocomplete="given-name" aria-describedby="aviso-nome">
+        <p id="aviso-nome" role="status" hidden>Digite somente seu nome, sem números.</p>
+      </section>
+
+      <section class="tela" hidden>
+        <h2 tabindex="-1">Revise sua simulação</h2>
+        <dl class="resumo">
+          <dt>Objetivo</dt><dd id="resumo-objetivo"></dd>
+          <dt>Valor solicitado</dt><dd id="resumo-valor"></dd>
+          <dt>Parcelas escolhidas</dt><dd id="resumo-parcelas"></dd>
+          <dt>Referência por parcela, sem encargos</dt><dd id="resumo-referencia"></dd>
+        </dl>
+        <p class="nota">Esta é uma estimativa. Ao continuar, você poderá revisar e enviar a mensagem no WhatsApp.</p>
+      </section>
+
+      <div class="acoes">
+        <button id="voltar" type="button" class="voltar" hidden>Voltar</button>
+        <button id="continuar" type="submit" disabled>Continuar</button>
+      </div>
+      <p id="aviso-whatsapp" role="status" hidden>O número de atendimento precisa ser configurado.</p>
+      <noscript><p>Ative o JavaScript para continuar.</p></noscript>
     </form>
+    <footer>Simulação de crédito · Atendimento pelo WhatsApp</footer>
   </main>
 </body>
 </html>

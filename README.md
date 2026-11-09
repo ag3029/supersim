@@ -1,30 +1,25 @@
-# Publicar no GitHub e no Cloudflare Pages
+# Funil de simulação e atendimento
 
-Esta versão contém uma página de atendimento com formulário e WhatsApp. A pessoa
-revisa a mensagem no WhatsApp. O formulário não envia os dados para um servidor.
+O visitante escolhe o objetivo, o valor e as parcelas, pode informar o nome e
+revisa as escolhas antes de abrir a conversa no WhatsApp. A estimativa por
+parcela divide o principal pela quantidade de parcelas e exclui juros e encargos.
 
-## Enviar ao GitHub
+## Publicar no GitHub Pages
 
-1. Extraia o ZIP. Abra index.html para testar a página.
-2. Abra whatsapp-config.js e troque o número entre aspas pelo seu número com DDD.
-3. Crie um repositório no GitHub. Envie os arquivos extraídos na raiz pela opção
-   Add file > Upload files. O index.html deve aparecer na primeira tela do
-   repositório. Clique em Commit changes.
+1. Extraia o ZIP e abra index.html para testar o fluxo.
+2. No repositório já publicado, abra Add file > Upload files.
+3. Envie todos os arquivos extraídos na raiz do repositório, incluindo index.html.
+   Confirme o commit na branch usada pelo GitHub Pages, normalmente main.
+4. Em Settings > Pages, confira se a origem está na raiz da branch. Aguarde o
+   deploy em Actions e abra Visit site. Percorra as cinco telas e confira o destino
+   da mensagem no WhatsApp.
 
-## Publicar no Cloudflare Pages
+## Trocar o número de WhatsApp
 
-1. Em Workers & Pages, crie um projeto Pages com a opção de conectar ao Git.
-2. Autorize o acesso ao repositório e selecione a branch que recebeu os arquivos.
-3. Use a opção sem framework. Deixe o comando de build vazio e use a raiz do
-   repositório como diretório de saída (.). Inicie o deploy.
-4. Abra o endereço pages.dev mostrado no painel e teste o botão.
+Edite whatsapp-config.js no GitHub. Troque só o número entre aspas na linha
+const WHATSAPP_NUMERO. Use DDD e número. Salve na branch de publicação.
 
-Para trocar o número depois, edite whatsapp-config.js no GitHub e salve na branch
-de produção. O Cloudflare publicará a alteração no próximo deploy.
-
-Guia oficial:
-https://developers.cloudflare.com/pages/get-started/git-integration/
-
-Consulta automática de CPF, banco de propostas e PIX não fazem parte deste pacote.
-Esses recursos exigem serviços autorizados, configuração de servidor e testes
-em homologação. Não coloque credenciais ou dados pessoais no repositório.
+Esta versão usa o visual da abertura e a ilustração do projeto original.
+Ela funciona no GitHub Pages sem servidor. A consulta externa de CPF, a
+verificação facial, as aprovações simuladas e as etapas de cobrança ficaram fora.
+O pacote também não inclui código de tracking, segredos ou banco de propostas.
